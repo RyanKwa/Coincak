@@ -14,7 +14,6 @@ struct HomeHeader: View {
                 Image("App-logo")
                 Spacer()
                 CurrentWalletView(walletName: "Ethereum Mainnet", walletLogo: "diamond")
-                
             }
             .padding(EdgeInsets(top: 24.0, leading: 20.0, bottom: 24.0, trailing: 20.0))
             Divider()
