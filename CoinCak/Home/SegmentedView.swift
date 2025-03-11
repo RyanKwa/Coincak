@@ -62,13 +62,14 @@ struct SegmentedView<Element, Content, Selection>: View where Content: View, Sel
                     .buttonStyle(PlainButtonStyle())
                     .background(GeometryReader { proxy in
                         /// Gives background color based on the view's size
+                        /// Will send triggers by the key to provide an updated size depending on the contents
                         Color.clear.preference(
                             key: SegmentSizePreferenceKey.self,
                             value: SegmentSize(index: index, size: proxy.size)
                         )
                     })
+                    /// Will receive the updates by the key
                     .onPreferenceChange(SegmentSizePreferenceKey.self) { segment in
-                        print("debug changes segment \(segment)")
                         segmentSizes[segment.index] = segment.size
                     }
                     .alignmentGuide(.horizontalCenterAlignment,
@@ -84,8 +85,6 @@ struct SegmentedView<Element, Content, Selection>: View where Content: View, Sel
 private extension SegmentedView {
     
     func selectionSize(at index: Data.Index) -> CGSize {
-        print("DEBUG Segment index \(index)")
-        print("DEBUG Segment size \(segmentSizes[index])")
         return segmentSizes[index] ?? .zero
     }
 }
