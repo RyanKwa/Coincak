@@ -8,13 +8,38 @@
 import SwiftUI
 
 struct HomeView: View {
+    var titles: [String] = [
+        "One",
+        "Two",
+        "Three",
+    ]
+    
+    @State var selectedIndex: Int = 0
+    
     var body: some View {
         NavigationStack {
             VStack {
                 HomeHeader()
-                Text("Home")
-                NavigationLink("Go to Home Detail A", value: "Home Detail A")
-                NavigationLink("Go to Home Detail B", value: "Home Detail B")
+                BalanceSectionView()
+                    .padding(.top, 24.0)
+                SegmentedView(titles,
+                              selectedIndex: Binding(get: { selectedIndex },
+                                                     set: { selectedIndex = $0 ?? 0 }),
+                              selectionAlignment: .center,
+                              content: { item, isSelected in
+                    Text(item)
+                        .foregroundColor(isSelected ? Color.black : Color.gray)
+                        .padding(.horizontal, 16)
+                        .padding(.vertical, 8)
+                    
+                }, selection: {
+                    VStack(spacing: 0) {
+                        Spacer()
+                        Rectangle()
+                            .fill(Color.black)
+                            .frame(height: 3)
+                    }
+                })
             }
         }.navigationDestination(for: String.self) { value in
             
@@ -25,3 +50,5 @@ struct HomeView: View {
 #Preview {
     HomeView()
 }
+
+

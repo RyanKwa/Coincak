@@ -35,34 +35,12 @@ struct BalanceSectionView: View {
                 .frame(minWidth: 0, maxWidth: .infinity)
             }
             .padding(.horizontal, 20.0)
+            .padding(.bottom, 24.0)
+            Divider()
         }
     }
 }
 
 #Preview {
     BalanceSectionView()
-}
-
-struct BalanceActionButton: View {
-    var icon: String
-    var text: String
-    var action: () -> Void
-    
-    var body: some View {
-        Button {
-            action()
-        } label: {
-            VStack {
-                Image(systemName: icon)
-                    .resizable()
-                    .frame(width: 24, height: 24)
-                    .padding()
-                Text(text)
-                    .font(.system(size: 12.0))
-            }.foregroundStyle(Color.black)
-                .padding(10.0)
-                .background(Color.gray.opacity(0.2))
-        }
-        
-    }
 }
