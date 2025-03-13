@@ -399,6 +399,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"CoinCak/Preview Content\"";
 				DEVELOPMENT_TEAM = L2V23RWBGR;
 				ENABLE_PREVIEWS = YES;
+				ENABLE_TESTING_SEARCH_PATHS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -430,6 +431,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"CoinCak/Preview Content\"";
 				DEVELOPMENT_TEAM = L2V23RWBGR;
 				ENABLE_PREVIEWS = YES;
+				ENABLE_TESTING_SEARCH_PATHS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
