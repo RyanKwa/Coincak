@@ -14,6 +14,7 @@ struct HomeView: View {
     ]
     
     @State var selectedIndex: Int = 0
+    @StateObject var viewModel = HomeViewModel()
     
     var body: some View {
         NavigationStack {
@@ -45,7 +46,7 @@ struct HomeView: View {
                     ZStack {
                         switch selectedIndex {
                         case 0:
-                            TokenListView()
+                            TokenListView(tokens: viewModel.tokens)
                         case 1:
                             Rectangle()
                                 .fill(Color.blue)
@@ -53,7 +54,6 @@ struct HomeView: View {
                             EmptyView()
                         }
                     }
-                        
                     Spacer()
                 }
             }

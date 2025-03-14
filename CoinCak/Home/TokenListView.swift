@@ -7,13 +7,15 @@
 
 import SwiftUI
 
-struct TokenListView: View {
-    @State var isProfit: Bool = false
+struct TokenListView<T: TokenData>: View {
+    
+    var tokens: [T]
+    
     var body: some View {
         ScrollView {
             VStack {
-                ForEach(0..<10) { _ in
-                    TokenCell(isProfit: $isProfit)
+                ForEach(tokens, id: \.self) { data in
+                    TokenCell(data: data)
                         .padding(.horizontal, 20.0)
                         .padding(.vertical, 8.0)
                 }
@@ -22,39 +24,6 @@ struct TokenListView: View {
     }
 }
 
-struct TokenCell: View {
-    
-    @Binding var isProfit: Bool
-    
-    var body: some View {
-        HStack {
-            ZStack {
-                Rectangle()
-                    .fill(Color.yellow)
-                    .frame(width: 60, height: 60)
-                Image(systemName: "diamond.circle.fill")
-            }
-            
-            VStack(alignment: .leading, spacing: 4.0) {
-                Text("BTC")
-                    .font(.system(size: 14.0, weight: .medium))
-                Text("1.2 Bitcoin")
-                    .foregroundStyle(Color.gray)
-                    .font(.system(size: 12.0))
-            }.padding(.vertical, 8)
-            Spacer()
-            
-            VStack(alignment: .trailing, spacing: 4.0) {
-                Text("$62,000.00")
-                    .font(.system(size: 14.0, weight: .medium))
-                Text("+0.5%")
-                    .foregroundStyle(isProfit ? Color.green : Color.red)
-                    .font(.system(size: 12.0))
-            }.padding(.vertical, 8)
-            
-        }.frame(maxWidth: .infinity)
-    }
-}
 #Preview {
-    TokenListView()
+    TokenListView(tokens: [PortfolioTokenData(icon: "", name: "Bitcoin", alias: "BTC", currentPrice: "$10.000", gain: "profit", gainPercentage: "+0.1%", tokenOwned: "1.2 Bitcoin")])
 }
