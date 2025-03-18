@@ -19,8 +19,9 @@ struct BalanceActionButton: View {
             VStack {
                 Image(systemName: icon)
                     .resizable()
-                    .frame(width: 24, height: 24)
-                    .padding(18.0)
+                    .frame(width: 18, height: 18)
+                    .padding(.vertical, 10.0)
+                    .padding(.horizontal, 18.0)
                 Text(text)
                     .font(.system(size: 12.0))
                     .padding(.bottom, 10)

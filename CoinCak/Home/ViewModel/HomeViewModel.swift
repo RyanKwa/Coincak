@@ -8,8 +8,8 @@
 import Foundation
 
 class HomeViewModel: ObservableObject {
-    @Published var tokens: [PortfolioTokenData] = []
-    
+    @Published var ownedTokens: [PortfolioTokenData] = []
+    @Published var ownedNFT: [PortfolioTokenData] = []
     init() {
         fetchTokens()
         fetchUpdatingTokens()
@@ -17,7 +17,7 @@ class HomeViewModel: ObservableObject {
     
     func fetchTokens() {
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            self.tokens = [
+            self.ownedTokens = [
                 PortfolioTokenData(icon: "", name: "Bitcoin", alias: "BTC", currentPrice: "$10.000", gain: "profit", gainPercentage: "+0.1%", tokenOwned: "1.2 BTC"),
                 PortfolioTokenData(icon: "", name: "Ethereum", alias: "ETH", currentPrice: "$2.000", gain: "loss", gainPercentage: "-0.5%", tokenOwned: "5.0 ETH")
             ]
@@ -27,7 +27,7 @@ class HomeViewModel: ObservableObject {
     func fetchUpdatingTokens() {
         Timer.scheduledTimer(withTimeInterval: 3, repeats: true) { _ in
             DispatchQueue.main.async {
-                for token in self.tokens {
+                for token in self.ownedTokens {
                     let newPrice = Int.random(in: 9000...11000)
                     token.currentPrice = "$\(newPrice)"
                     
