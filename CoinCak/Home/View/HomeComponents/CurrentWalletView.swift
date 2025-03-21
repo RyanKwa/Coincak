@@ -23,8 +23,6 @@ struct CurrentWalletView: View {
             }
             Text(walletName)
                 .font(.system(size: 12))
-                .padding(.trailing, 8)
-                .padding(.leading, 12)
             ZStack {
                 RoundedRectangle(cornerRadius: 6.0)
                     .fill(Color.clear)
@@ -35,7 +33,6 @@ struct CurrentWalletView: View {
             }
         }
         .padding(8.0)
-        .background(Color.gray.opacity(0.2))
         .clipShape(RoundedRectangle(cornerRadius: 10.0))
 
     }
