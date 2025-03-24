@@ -9,6 +9,7 @@ import SwiftUI
 
 struct BalanceSectionView: View {
     @State var isShowBalance: Bool = false
+    @EnvironmentObject var coordinator: HomeCoordinator
     var body: some View {
         VStack {
             HStack {
@@ -21,15 +22,19 @@ struct BalanceSectionView: View {
                 Group {
                     BalanceActionButton(icon: "arrow.up", text: "Send") {
                         print("Send")
+                        coordinator.push(.send)
                     }
                     BalanceActionButton(icon: "arrow.down", text: "Receive")  {
                         print("Recieve")
+                        coordinator.push(.receive)
                     }
                     BalanceActionButton(icon: "arrow.left.arrow.right", text: "Swap")  {
                         print("Swap")
+                        coordinator.push(.swap)
                     }
                     BalanceActionButton(icon: "wallet.pass", text: "Buy/Sell")  {
                         print("Buy/Sell")
+                        coordinator.push(.buyOrSell)
                     }
                 }
                 .frame(minWidth: 0, maxWidth: .infinity)
