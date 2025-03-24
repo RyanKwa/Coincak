@@ -12,13 +12,7 @@ struct ReceiveView: View {
     var body: some View {
         VStack() {
             
-            NavigationHeader {
-                Text("Receive")
-            } rightItem: {
-                Image(systemName: "ellipsis.circle.fill")
-                    .resizable()
-                    .frame(width: 24.0, height: 24.0)
-            }
+            NavigationHeader(titleView: Text("Receive"))
             VStack {
                 ZStack {
                     Rectangle()
