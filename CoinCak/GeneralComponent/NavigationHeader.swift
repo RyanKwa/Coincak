@@ -7,40 +7,18 @@
 
 import SwiftUI
 
-struct NavigationHeader<LeftItem: View,
-                        TitleView: View,
-                        RightItem: View> : View {
-    var leftItem: LeftItem?
-    var titleView: TitleView
-    var rightItem: RightItem?
-    init(@ViewBuilder leftItem: () -> LeftItem = { EmptyView() },
-         titleView: TitleView,
-         @ViewBuilder rightItem: () -> RightItem = { EmptyView() }) {
-        self.leftItem = leftItem()
-        self.titleView = titleView
-        self.rightItem = rightItem()
-    }
+struct NavigationHeader: View {
+    
+    let navigationHeaderConfig: NavigationHeaderConfig
 
     var body: some View {
         VStack {
             HStack {
-                if LeftItem.self == EmptyView.self {
-                    Image(systemName: "arrow.backward")
-                        .resizable()
-                        .frame(width: 24.0, height: 24.0)
-                } else {
-                    leftItem
-                }
+                navigationHeaderConfig.leftItem
                 Spacer()
-                titleView
+                navigationHeaderConfig.titleView
                 Spacer()
-                if RightItem.self == EmptyView.self {
-                    Rectangle()
-                    .fill(Color.clear)
-                        .frame(width: 24.0, height: 24.0)
-                } else {
-                    self.rightItem
-                }
+                navigationHeaderConfig.rightItem
             }
             .padding(.vertical, 12.0)
             .padding(.horizontal, 24.0)
@@ -50,5 +28,23 @@ struct NavigationHeader<LeftItem: View,
 }
 
 #Preview {
-    NavigationHeader(titleView: Text("Title"))
+    NavigationHeader(navigationHeaderConfig: NavigationHeaderConfig(leftItem: {
+        Button(action: {
+            print("Left")
+        }) {
+            Image(systemName: "arrow.backward")
+                .resizable()
+                .frame(width: 24.0, height: 24.0)
+        }.buttonStyle(.plain)
+    }, titleView: Text("Title"), rightItem: {
+        Button(action: {
+            print("Left")
+        }) {
+            Image(systemName: "arrow.forward")
+                .resizable()
+                .frame(width: 24.0, height: 24.0)
+        }.buttonStyle(.plain)
+    }, backButtonAction: {
+        print("Back")
+    }))
 }
