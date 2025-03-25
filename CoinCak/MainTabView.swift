@@ -8,11 +8,12 @@
 import SwiftUI
 
 struct MainTabView: View {
+    
+    @StateObject var homeCoordinator = HomeCoordinator()
     var body: some View {
         TabView {
             Group {
-                
-                HomeView()
+                HomeCoordinatorView(coordinator: homeCoordinator)
                     .tabItem {
                         Label("Home", systemImage: "house")
                     }

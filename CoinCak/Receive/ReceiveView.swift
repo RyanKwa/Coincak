@@ -8,17 +8,11 @@
 import SwiftUI
 
 struct ReceiveView: View {
-    
+    @EnvironmentObject var coordinator: HomeCoordinator
     var body: some View {
         VStack() {
             
-            NavigationHeader {
-                Text("Receive")
-            } rightItem: {
-                Image(systemName: "ellipsis.circle.fill")
-                    .resizable()
-                    .frame(width: 24.0, height: 24.0)
-            }
+            NavigationHeader(navigationHeaderConfig: self.setupNavigationHeaderConfig())
             VStack {
                 ZStack {
                     Rectangle()
@@ -53,6 +47,21 @@ struct ReceiveView: View {
             }.padding(.top, 0)
             Spacer()
         }
+    }
+    
+    func setupNavigationHeaderConfig() -> NavigationHeaderConfig {
+        let navigationHeaderConfig = NavigationHeaderConfig(titleView: Text("Receive"), rightItem: {
+            Button {
+                print("Right item tapped")
+            } label: {
+                Image(systemName: "ellipsis")
+                    .imageScale(.large)
+            }.buttonStyle(.plain)
+        }) {
+            coordinator.pop()
+        }
+        
+        return navigationHeaderConfig
     }
 }
 
