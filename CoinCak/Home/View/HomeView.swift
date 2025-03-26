@@ -21,7 +21,7 @@ struct HomeView: View {
         ScrollView {
             VStack {
                 HomeHeader()
-                BalanceSectionView()
+                TotalBalanceSectionView()
                     .padding(.top, 24.0)
                 Text("Your Token")
                     .frame(maxWidth: .infinity, alignment: .leading)

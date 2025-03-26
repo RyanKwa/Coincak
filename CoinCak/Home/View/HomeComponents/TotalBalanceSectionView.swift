@@ -1,5 +1,5 @@
 //
-//  BalanceSectionView.swift
+//  TotalBalanceSectionView.swift
 //  CoinCak
 //
 //  Created by mac on 07/03/25.
@@ -7,13 +7,18 @@
 
 import SwiftUI
 
-struct BalanceSectionView: View {
+struct TotalBalanceSectionView: View {
     @State var isShowBalance: Bool = false
     @EnvironmentObject var coordinator: HomeCoordinator
     var body: some View {
         VStack {
             HStack {
-                TotalBalanceView()
+                HStack {
+                    Text("Total Balance")
+                    Image(systemName: "eye")
+                        .resizable()
+                        .frame(width: 24.0, height: 18.0)
+                }
                 Spacer()
                 CopyableAddressView()
             }.padding(.horizontal, 20.0)
@@ -47,5 +52,5 @@ struct BalanceSectionView: View {
 }
 
 #Preview {
-    BalanceSectionView()
+    TotalBalanceSectionView()
 }
