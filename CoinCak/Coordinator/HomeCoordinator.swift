@@ -32,7 +32,9 @@ class HomeCoordinator: BaseCoordinator<HomeRoute> {
             case .buyOrSell:
                 Text("Buy or Sell")
             }
-        }.navigationBarTitle("")
+        }
+        .toolbar(.hidden, for: .tabBar)
+        .navigationBarTitle("")
             .navigationBarHidden(true)
     }
 }
