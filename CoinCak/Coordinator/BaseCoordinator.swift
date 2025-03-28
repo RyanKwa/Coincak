@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-class BaseCoordinator<Route: Hashable>: Coordinator {
+class BaseCoordinator<Route: Hashable>: CoordinatorProtocol {
     
     @Published var path: NavigationPath = NavigationPath()
     @Published private(set) var routes: [Route] = []

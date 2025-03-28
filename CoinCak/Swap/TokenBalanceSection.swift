@@ -9,6 +9,8 @@ import SwiftUI
 
 struct TokenBalanceSection: View {
     var hideBottomSection: Bool = false
+    @State var text: String = ""
+    var inputIdentifier: String = ""
     var body: some View {
         VStack {
             HStack(alignment: .top) {
@@ -22,14 +24,17 @@ struct TokenBalanceSection: View {
                 Divider()
                 Spacer()
                 VStack(alignment: .trailing, spacing: 32.0) {
-                    Text("10,00")
-                        .font(.system(size: 32.0, weight: .regular))
+                    CustomTextField(text: $text, shouldSupressKeyboard: true, placeholder: "")
+                        .lineLimit(1)
                     Text("Balance = 2")
                         .font(.system(size: 12.0, weight: .regular))
                 }
+                .padding(.leading, 4.0)
             }
             .padding(16.0)
+            
             .frame(height: 120.0)
+            .frame(maxWidth: UIScreen.main.bounds.width)
             .background(Color.gray.opacity(0.2))
             .clipShape(RoundedRectangle(cornerRadius: 10.0))
             if !hideBottomSection {

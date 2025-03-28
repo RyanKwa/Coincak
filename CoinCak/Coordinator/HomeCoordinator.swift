@@ -28,7 +28,7 @@ class HomeCoordinator: BaseCoordinator<HomeRoute> {
             case .receive:
                 ReceiveView()
             case .swap:
-                Text("Swap")
+                SwapView()
             case .buyOrSell:
                 Text("Buy or Sell")
             }
